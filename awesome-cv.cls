@@ -76,12 +76,37 @@
 \RequirePackage{unicode-math}
 % Needed to use icons from font-awesome
 \RequirePackage{fontawesome6}
-\RequirePackage{roboto}
-\RequirePackage[default,opentype]{sourcesanspro}
+% Prefer Helvetica, then Arial, then a safe sans fallback
+\IfFontExistsTF{Helvetica Neue}{
+  \setmainfont{Helvetica Neue}
+  \setsansfont{Helvetica Neue}
+  \newfontfamily\headerfont{Helvetica Neue}
+  \newfontfamily\headerfontlight{Helvetica Neue Light}
+}{
+  \IfFontExistsTF{Helvetica}{
+    \setmainfont{Helvetica}
+    \setsansfont{Helvetica}
+    \newfontfamily\headerfont{Helvetica}
+    \newfontfamily\headerfontlight{Helvetica}
+  }{
+    \IfFontExistsTF{Arial}{
+      \setmainfont{Arial}
+      \setsansfont{Arial}
+      \newfontfamily\headerfont{Arial}
+      \newfontfamily\headerfontlight{Arial}
+    }{
+      \setmainfont{Latin Modern Sans}
+      \setsansfont{Latin Modern Sans}
+      \newfontfamily\headerfont{Latin Modern Sans}
+      \newfontfamily\headerfontlight{Latin Modern Sans}
+    }
+  }
+}
 % Needed for the photo ID
 \RequirePackage[skins]{tcolorbox}
 % Needed to deal a paragraphs
 \RequirePackage{parskip}
+\setlength{\parskip}{4pt}
 % Needed to deal hyperlink
 \RequirePackage[hidelinks,unicode,pdfpagelabels=false]{hyperref}
 \hypersetup{%
@@ -163,11 +188,10 @@
 %-------------------------------------------------------------------------------
 %                Configuration for fonts
 %-------------------------------------------------------------------------------
-\newcommand*{\headerfont}{\roboto}
-\newcommand*{\headerfontlight}{\robotolight}
-\newcommand*{\footerfont}{\sourcesanspro}
-\newcommand*{\bodyfont}{\sourcesanspro}
-\newcommand*{\bodyfontlight}{\sourcesansprolight}
+\newcommand*{\footerfont}{\sffamily}
+\newcommand*{\bodyfont}{\sffamily}
+\newcommand*{\bodyfontlight}{\sffamily}
+
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
@@ -176,27 +200,27 @@
 % For fundamental structures
 \newcommand*{\headerfirstnamestyle}[1]{{\fontsize{32pt}{1em}\headerfontlight\color{graytext} #1}}
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\upshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
-\newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
+\newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\upshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\upshape\textcolor{text}{#1}}}
+\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfont\mdseries\upshape\color{text}}
 
 % For elements of entry
 \newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\upshape\color{awesome} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\upshape\color{darktext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\mdseries\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\upshape\color{graytext} #1}}
 \newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
@@ -207,7 +231,7 @@
 
 % For elements of skill
 \newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\mdseries\color{text} #1}}
 
 % For elements of the cover letter
 \newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
@@ -435,6 +459,7 @@
 %-------------------------------------------------------------------------------
 % Use to align an element of tabular table
 \newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{T}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
@@ -667,6 +692,7 @@
   \vspace{\acvSectionContentTopSkip}
   \vspace{-3mm}
   \paragraphstyle
+  \setlength{\parskip}{4pt}
 }{%
   \par
   \vspace{2mm}
@@ -682,7 +708,7 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+  \vspace{1.5mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -745,7 +771,7 @@
   \begin{center}
     \setlength\tabcolsep{1ex}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} r L{\textwidth * \real{0.9}}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} T{3.2cm} T{\textwidth - 3.2cm}}
 }{%
     \end{tabular*}
   \end{center}
@@ -761,8 +787,9 @@
   \vspace{-4.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
+    \setlength{\parskip}{4pt}
     \renewcommand{\labelitemi}{\bullet}
+    \bodyfont\mdseries\color{text}
 }{%
   \end{itemize}
   \end{justify}

@@ -2,12 +2,9 @@
 %!TEX encoding = UTF-8 Unicode
 % Awesome CV LaTeX Template for CV/Resume
 %
-% This template has been downloaded from:
-% https://github.com/posquit0/Awesome-CV
-%
 % Author:
-% Claud D. Park <posquit0.bj@gmail.com>
-% http://www.posquit0.com
+% Alper Sarper <alpersarper.dev@gmail.com>
+%
 %
 % Template license:
 % CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/)
@@ -39,7 +36,7 @@
 % \definecolor{sectiondivider}{HTML}{5D5D5D}
 
 % Set false if you don't want to highlight section with awesome color
-\setbool{acvSectionColorHighlight}{true}
+\setbool{acvSectionColorHighlight}{false}
 
 % If you would like to change the social information separator from a pipe (|) to something else
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
@@ -51,16 +48,17 @@
 %-------------------------------------------------------------------------------
 % Available options: circle|rectangle,edge/noedge,left/right
 % \photo{./examples/profile.png}
-\name{Claud D.}{Park}
-\position{Site Reliability Engineer{\enskip\cdotp\enskip}Software Architect}
-\address{235, World Cup buk-ro, Mapo-gu, Seoul, 03936, Republic of Korea}
+\name{Alper}{Sarper}
+% \position{Frontend Lead{\enskip\cdotp\enskip}Senior Frontend Engineer}
+\position{Frontend Lead{\enskip\cdotp\enskip}Senior Frontend Engineer}
+\address{Istanbul, Turkey}
 
-\mobile{(+82) 10-9030-1843}
-\email{posquit0.bj@gmail.com}
+\mobile{(+90) 5426467305}
+\email{alpersarper.dev@gmail.com}
 %\dateofbirth{January 1st, 1970}
-\homepage{www.posquit0.com}
-\github{posquit0}
-\linkedin{posquit0}
+% \homepage{www.posquit0.com}
+\github{alpersarper}
+\linkedin{alpersarper}
 % \gitlab{gitlab-id}
 % \stackoverflow{SO-id}{SO-name}
 % \twitter{@twit}
@@ -76,7 +74,7 @@
 % \googlescholar{googlescholar-id}{}
 % \extrainfo{extra information}
 
-\quote{``Be the change that you want to see in the world."}
+% \quote{``Be the change that you want to see in the world."}
 
 
 %-------------------------------------------------------------------------------
@@ -90,7 +88,7 @@
 % Leave any of these blank if they are not needed
 \makecvfooter
   {\today}
-  {Claud D. Park~~~·~~~Curriculum Vitae}
+  {Alper Sarper~~~·~~~Curriculum Vitae}
   {\thepage}
 
 
@@ -98,15 +96,22 @@
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-\input{cv/education.tex}
+\input{cv/summary.tex}
 \input{cv/skills.tex}
 \input{cv/experience.tex}
-\input{cv/extracurricular.tex}
-\input{cv/honors.tex}
-\input{cv/certificates.tex}
-\input{cv/presentation.tex}
-\input{cv/writing.tex}
-\input{cv/committees.tex}
+
+% \input{cv/extracurricular.tex}
+% \input{cv/honors.tex}
+% \input{cv/certificates.tex}
+% \input{cv/presentation.tex}
+% \input{cv/writing.tex}
+% \input{cv/committees.tex}
+
+\input{cv/education.tex}
+
+\newpage
+\input{cv/references.tex}
+
 
 
 %-------------------------------------------------------------------------------
