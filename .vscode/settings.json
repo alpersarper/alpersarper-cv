@@ -1,0 +1,29 @@
+{
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk (xelatex)",
+            "tools": [
+                "latexmk_xelatex"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk_xelatex",
+            "command": "latexmk",
+            "args": [
+                "-pdfxe",
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOC%"
+            ]
+        }
+    ],
+    // Kaydedince otomatik derle
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    // PDF’yi VS Code içinde göster
+    "latex-workshop.view.pdf.viewer": "tab",
+    // Kök dosya seçimi (istemiyorsan dokunma)
+    "latex-workshop.latex.rootFile.useSubFile": false
+}
