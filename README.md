@@ -48,7 +48,7 @@ _Thank you for your support!_
 
 You can see [PDF](https://raw.githubusercontent.com/alpersarper/alpersarper-cv/main/examples/latest-exportable-resumes/ALPERSARPER-CV-2026-EN.pdf)
 
-[![Résumé](https://raw.githubusercontent.com/alpersarper/alpersarper-cv/main/examples/latest-exportable-resumes/ALPERSARPER-CV-2026-EN.png)]
+![Résumé](https://raw.githubusercontent.com/alpersarper/alpersarper-cv/main/examples/latest-exportable-resumes/ALPERSARPER-CV-2026-EN.png)
 
 ## Quick Start
 
