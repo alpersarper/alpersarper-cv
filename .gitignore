@@ -21,3 +21,8 @@
 ## Mac OS X metadata files:
 *.DS_Store
 
+
+# Build artifacts
+*.xdv
+*.synctex.gz
+*.fdb_latexmk
