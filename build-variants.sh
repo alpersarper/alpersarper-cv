@@ -7,11 +7,18 @@
 # The sources are never modified: everything is compiled in a temporary copy.
 # The no-references variants drop the standalone `\input{cv_xx/references.tex}`
 # line together with the standalone `\newpage` line right before it.
+#
+# The public repo only carries "Available upon request" in references.tex.
+# For the full variants, referee contact details are read from a private file
+# outside the repo: $CV_PRIVATE_DIR/references-<lang>.tex
+# (default ~/Documents/cv-private). If it is missing, the full variant keeps
+# the public placeholder and a warning is printed.
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 OUT_DIR="${1:-$HOME/Desktop/Alper-Sarper-CV-2026}"
 PREFIX="Alper-Sarper-CV-2026"
+PRIVATE_DIR="${CV_PRIVATE_DIR:-$HOME/Documents/cv-private}"
 export PATH="/opt/homebrew/bin:/Library/TeX/texbin:$PATH"
 
 WORK_DIR="$(mktemp -d "${TMPDIR:-/tmp}/cv-variants.XXXXXX")"
@@ -35,6 +42,12 @@ for lang in en tr; do
   LANG_UP="$(echo "$lang" | tr '[:lower:]' '[:upper:]')"
   src="$WORK_DIR/examples/cv.$lang.tex"
 
+  private_refs="$PRIVATE_DIR/references-$lang.tex"
+  if [ -f "$private_refs" ]; then
+    cp "$private_refs" "$WORK_DIR/examples/cv_$lang/references.tex"
+  else
+    echo "warning: $private_refs not found; $LANG_UP full variant uses the public references placeholder" >&2
+  fi
   build "cv.$lang" "$PREFIX-$LANG_UP.pdf"
 
   # No-references variant: remove the `\newpage` + `\input{cv_xx/references.tex}` pair.
